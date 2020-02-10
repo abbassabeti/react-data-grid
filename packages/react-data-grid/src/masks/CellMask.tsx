@@ -12,7 +12,7 @@ export default forwardRef<HTMLDivElement, CellMaskProps>(function CellMask({ wid
         height,
         width,
         zIndex,
-        transform: `translate(${left}px, ${top}px)`
+        transform: `translate(-${left}px, ${top}px)`
       }}
       data-test="cell-mask"
       ref={ref}

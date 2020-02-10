@@ -1,7 +1,7 @@
 /.eslintcache
 /coverage
-/packages/*/dist
-/packages/*/lib
+# /packages/*/dist
+# /packages/*/lib
 
 node_modules
 npm-debug.log

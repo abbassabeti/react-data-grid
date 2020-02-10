@@ -1,0 +1,11 @@
+/// <reference types="react" />
+import { Position, Dimension } from '../common/types';
+export interface DraggedPosition extends Position {
+    overRowIdx: number;
+}
+interface Props {
+    draggedPosition: DraggedPosition;
+    getSelectedDimensions(position: Position): Dimension;
+}
+export default function DragMask({ draggedPosition, getSelectedDimensions }: Props): JSX.Element | null;
+export {};

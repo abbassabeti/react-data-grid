@@ -3,6 +3,13 @@
   "license": "MIT",
   "name": "react-data-grid",
   "version": "7.0.1",
+  "main": "packages/react-data-grid/lib/index.js",
+  "module": "packages/react-data-grid/lib/index.js",
+  "types": "packages/react-data-grid/lib/index.d.ts",
+  "files": [
+    "packages/react-data-grid/dist",
+    "packages/react-data-grid/lib"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -42,7 +49,7 @@
     "faker": "^4.1.0",
     "immutability-helper": "^3.0.1",
     "jest": "^24.9.0",
-    "lerna": "^3.20.2",
+    "lerna": "^3.19.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "markdown": "^0.5.0",

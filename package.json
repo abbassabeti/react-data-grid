@@ -1,7 +1,8 @@
 {
   "private": true,
   "license": "MIT",
-  "version": "0.0.1",
+  "name": "react-data-grid",
+  "version": "7.0.1",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

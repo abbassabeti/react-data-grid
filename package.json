@@ -3,12 +3,14 @@
   "license": "MIT",
   "name": "react-data-grid",
   "version": "7.0.1",
-  "main": "packages/react-data-grid/lib/index.js",
-  "module": "packages/react-data-grid/lib/index.js",
-  "types": "packages/react-data-grid/lib/index.d.ts",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
   "files": [
     "packages/react-data-grid/dist",
-    "packages/react-data-grid/lib"
+    "packages/react-data-grid/lib",
+    "packages/react-data-grid-addons/dist",
+    "packages/react-data-grid-addons/lib"
   ],
   "scripts": {
     "test": "jest",

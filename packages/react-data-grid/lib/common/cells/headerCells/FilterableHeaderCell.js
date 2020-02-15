@@ -13,7 +13,7 @@ export default function FilterableHeaderCell(_a) {
                 onEnter({ filterTerm: filterTerm, column: column });
             }*/
             if (onChange) {
-                onChange({ filterTerm: value, column: column });
+                onChange({ filterTerm: event.target.value, column: column });
             }
         }
     }

@@ -202,7 +202,7 @@ export interface IRowRendererProps<TRow> {
 export interface FilterRendererProps<TRow, TFilterValue = unknown> {
   column: CalculatedColumn<TRow>;
   onChange?(event: AddFilterEvent<TRow>): void;
-  onEnter?(event: AddFilterEvent<TRow>): void;
+  //onEnter?(event: AddFilterEvent<TRow>): void;
   /** TODO: remove */
   getValidFilterValues?(columnKey: keyof TRow): TFilterValue;
 }

@@ -62,7 +62,7 @@ var EnterFilter = /** @class */ (function (_super) {
         this.props.onChange({ filterTerm: filters, column: this.props.column, rawValue: value, filterValues: this.filterValues });
     };
     EnterFilter.prototype.render = function () {
-        return (React.createElement(Select, { autosize: false, name: "filter-" + this.props.column.key, options: this.state.options, placeholder: this.state.placeholder, onChange: this.handleChange, onKeyDown: function (event) { console.log('event is', event); }, escapeClearsValue: true, multi: this.props.multiSelection !== undefined && this.props.multiSelection !== null ? this.props.multiSelection : true, value: this.state.filters }));
+        return (React.createElement(Select, { autosize: false, name: "filter-" + this.props.column.key, options: this.state.options, placeholder: this.state.placeholder, onChange: this.handleChange, onInputKeyDown: function (event) { console.log('event is', event); }, escapeClearsValue: true, multi: this.props.multiSelection !== undefined && this.props.multiSelection !== null ? this.props.multiSelection : true, value: this.state.filters }));
     };
     EnterFilter.propTypes = {
         onChange: PropTypes.func.isRequired,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FilterRendererProps } from '../../types';
 
-export default function FilterableHeaderCell<R>({ column, onChange }: FilterRendererProps<R>) {
+export default function FilterableHeaderCell<R>({ column, onChange, onEnter }: FilterRendererProps<R>) {
   const [filterTerm, setFilterTerm] = useState('');
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -9,6 +9,14 @@ export default function FilterableHeaderCell<R>({ column, onChange }: FilterRend
     setFilterTerm(value);
     if (onChange) {
       onChange({ filterTerm: value, column });
+    }
+  }
+
+  function handleKeyUp(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.keyCode == 13 || event.which == 13){
+      if (onEnter){
+        onEnter({filterTerm: filterTerm, column})
+      }
     }
   }
 
@@ -20,6 +28,7 @@ export default function FilterableHeaderCell<R>({ column, onChange }: FilterRend
         placeholder="Search"
         value={filterTerm}
         onChange={handleChange}
+        onKeyUp={handleKeyUp}
       />
     </div>
   );

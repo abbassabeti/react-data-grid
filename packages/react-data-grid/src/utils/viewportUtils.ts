@@ -15,7 +15,7 @@ export function getVerticalRangeToRender(
   rowsCount: number,
   renderBatchSize: number
 ) {
-  const overscanThreshold = 4;
+  const overscanThreshold = 100;
   const rowVisibleStartIdx = Math.floor(scrollTop / rowHeight);
   const rowVisibleEndIdx = Math.min(rowsCount - 1, Math.floor((scrollTop + height) / rowHeight));
   const rowOverscanStartIdx = Math.max(0, Math.floor((rowVisibleStartIdx - overscanThreshold) / renderBatchSize) * renderBatchSize);

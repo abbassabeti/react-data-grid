@@ -6,7 +6,7 @@ function getTotalFrozenColumnWidth(columns, lastFrozenColumnIndex) {
     return lastFrozenColumn.left + lastFrozenColumn.width;
 }
 export function getVerticalRangeToRender(height, rowHeight, scrollTop, rowsCount, renderBatchSize) {
-    var overscanThreshold = 4;
+    var overscanThreshold = 100; // Changed from 4 to 100 to avoid white part instead of showing list/ no matter how performance is as far as counts are up to 100
     var rowVisibleStartIdx = Math.floor(scrollTop / rowHeight);
     var rowVisibleEndIdx = Math.min(rowsCount - 1, Math.floor((scrollTop + height) / rowHeight));
     var rowOverscanStartIdx = Math.max(0, Math.floor((rowVisibleStartIdx - overscanThreshold) / renderBatchSize) * renderBatchSize);

@@ -71,7 +71,8 @@ function Cell(_a) {
         return allEvents;
     }
     var colIsFrozen = isFrozen(column);
-    className = classNames(column.cellClass, 'rdg-cell', className, {
+    var rowIsCustomed = rowData.customStyle
+    className = classNames(column.cellClass, 'rdg-cell',rowIsCustomed, className, {
         'rdg-cell-frozen': colIsFrozen,
         'rdg-cell-frozen-last': colIsFrozen && column.idx === lastFrozenColumnIndex,
         'rdg-child-cell': expandableOptions && expandableOptions.subRowDetails && expandableOptions.treeDepth > 0

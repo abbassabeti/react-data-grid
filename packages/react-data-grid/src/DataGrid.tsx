@@ -257,6 +257,7 @@ function DataGrid<R, K extends keyof R>({
   }
 
   function handleScroll(scrollPosition: ScrollPosition) {
+    console.log('scrolling to a position')
     if (headerRef.current && scrollLeft.current !== scrollPosition.scrollLeft) {
       scrollLeft.current = scrollPosition.scrollLeft;
       headerRef.current.setScrollLeft(scrollPosition.scrollLeft);

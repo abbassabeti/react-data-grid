@@ -123,7 +123,6 @@ export default class HeaderRow<R, K extends keyof R> extends React.Component<Hea
   }
 
   setScrollLeft(scrollLeft: number): void {
-    console.log('scrolling to a position')
     this.props.columns.forEach(column => {
       const { key } = column;
       if (!this.cells.has(key)) return;

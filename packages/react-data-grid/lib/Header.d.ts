@@ -9,6 +9,7 @@ export interface HeaderProps<R, K extends keyof R> extends SharedDataGridProps<R
     headerRows: [HeaderRowData<R>, HeaderRowData<R> | undefined];
     cellMetaData: CellMetaData<R>;
     onSort?(columnKey: keyof R, direction: DEFINE_SORT): void;
+    onScroll(position: ScrollPosition): void;
     onColumnResize(column: CalculatedColumn<R>, width: number): void;
 }
 export interface HeaderHandle {

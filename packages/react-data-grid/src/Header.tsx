@@ -2,7 +2,7 @@ import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 
 import HeaderRow from './HeaderRow';
 import { getScrollbarSize, isPositionStickySupported } from './utils';
-import { CalculatedColumn, HeaderRowData, ColumnMetrics, CellMetaData } from './common/types';
+import { CalculatedColumn, HeaderRowData, ColumnMetrics, CellMetaData, ScrollPosition } from './common/types';
 import { DEFINE_SORT } from './common/enums';
 import { DataGridProps } from './DataGrid';
 
@@ -15,7 +15,6 @@ type SharedDataGridProps<R, K extends keyof R> = Pick<DataGridProps<R, K>,
 | 'onSelectedRowsChange'
 | 'sortColumn'
 | 'sortDirection'
-| 'onScroll'
 > & Required<Pick<DataGridProps<R, K>,
 | 'rowKey'
 >>;
@@ -25,6 +24,7 @@ export interface HeaderProps<R, K extends keyof R> extends SharedDataGridProps<R
   columnMetrics: ColumnMetrics<R>;
   headerRows: [HeaderRowData<R>, HeaderRowData<R> | undefined];
   cellMetaData: CellMetaData<R>;
+  onScroll(position: ScrollPosition): void;
   onSort?(columnKey: keyof R, direction: DEFINE_SORT): void;
   onColumnResize(column: CalculatedColumn<R>, width: number): void;
 }

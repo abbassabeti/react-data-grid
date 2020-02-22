@@ -19,6 +19,7 @@ function DataGrid(_a, ref) {
     var _o = __read(useState(function () { return new Map(); }), 2), columnWidths = _o[0], setColumnWidths = _o[1];
     var _p = __read(useState(function () { return new EventBus(); }), 1), eventBus = _p[0];
     var _q = __read(useState(0), 2), gridWidth = _q[0], setGridWidth = _q[1];
+    var canvasRef = useRef(null);
     var gridRef = useRef(null);
     var headerRef = useRef(null);
     var lastSelectedRowIdx = useRef(-1);
@@ -85,6 +86,17 @@ function DataGrid(_a, ref) {
             props.onScroll(scrollPosition);
         }
     }
+    function handleHeaderScroll(scrollPosition) {
+        debugger
+        if (canvasRef.current != undefined && scrollLeft.current !== scrollPosition.scrollLeft) {
+            scrollLeft.current = scrollPosition.scrollLeft;
+            canvasRef.current.handleOuterScroll(scrollPosition);
+        }
+        if (props.onScroll) {
+            props.onScroll(scrollPosition);
+        }
+    }
+
     function handleDragEnter(overRowIdx) {
         eventBus.dispatch(EventTypes.DRAG_ENTER, overRowIdx);
     }
@@ -213,8 +225,8 @@ function DataGrid(_a, ref) {
     var headerRows = getHeaderRows();
     var rowOffsetHeight = headerRows[0].height + (headerRows[1] ? headerRows[1].height : 0);
     return (React.createElement("div", { className: "rdg-root", style: { width: width, lineHeight: rowHeight + "px" }, ref: gridRef }, columnMetrics && (React.createElement(React.Fragment, null,
-        React.createElement(Header, { ref: headerRef, rowKey: rowKey, rowsCount: rowsCount, rowGetter: rowGetter, columnMetrics: columnMetrics, onColumnResize: handleColumnResize, headerRows: headerRows, sortColumn: props.sortColumn, sortDirection: props.sortDirection, draggableHeaderCell: props.draggableHeaderCell, onSort: props.onGridSort, onHeaderDrop: props.onHeaderDrop, allRowsSelected: selectedRows !== undefined && selectedRows.size === rowsCount, onSelectedRowsChange: onSelectedRowsChange, getValidFilterValues: props.getValidFilterValues, cellMetaData: cellMetaData }),
-        rowsCount === 0 && isValidElementType(props.emptyRowsView) ? createElement(props.emptyRowsView) : (React.createElement(Canvas, { rowKey: rowKey, rowHeight: rowHeight, rowRenderer: props.rowRenderer, rowGetter: rowGetter, rowsCount: rowsCount, selectedRows: selectedRows, onRowSelectionChange: handleRowSelectionChange, columnMetrics: columnMetrics, onScroll: handleScroll, cellMetaData: cellMetaData, height: minHeight - rowOffsetHeight, scrollToRowIndex: props.scrollToRowIndex, contextMenu: props.contextMenu, getSubRowDetails: props.getSubRowDetails, rowGroupRenderer: props.rowGroupRenderer, enableCellSelect: enableCellSelect, enableCellAutoFocus: enableCellAutoFocus, cellNavigationMode: cellNavigationMode, eventBus: eventBus, interactionMasksMetaData: interactionMasksMetaData, RowsContainer: props.RowsContainer, editorPortalTarget: editorPortalTarget, onCanvasKeydown: props.onGridKeyDown, onCanvasKeyup: props.onGridKeyUp, renderBatchSize: renderBatchSize, summaryRows: props.summaryRows }))))));
+        React.createElement(Header, { ref: headerRef, rowKey: rowKey, rowsCount: rowsCount, rowGetter: rowGetter, columnMetrics: columnMetrics, onColumnResize: handleColumnResize, headerRows: headerRows, sortColumn: props.sortColumn, onScroll: handleHeaderScroll, sortDirection: props.sortDirection, draggableHeaderCell: props.draggableHeaderCell, onSort: props.onGridSort, onHeaderDrop: props.onHeaderDrop, allRowsSelected: selectedRows !== undefined && selectedRows.size === rowsCount, onSelectedRowsChange: onSelectedRowsChange, getValidFilterValues: props.getValidFilterValues, cellMetaData: cellMetaData }),
+        rowsCount === 0 && isValidElementType(props.emptyRowsView) ? createElement(props.emptyRowsView) : (React.createElement(Canvas, { ref: canvasRef, rowKey: rowKey, rowHeight: rowHeight, rowRenderer: props.rowRenderer, rowGetter: rowGetter, rowsCount: rowsCount, selectedRows: selectedRows, onRowSelectionChange: handleRowSelectionChange, columnMetrics: columnMetrics, onScroll: handleScroll, cellMetaData: cellMetaData, height: minHeight - rowOffsetHeight, scrollToRowIndex: props.scrollToRowIndex, contextMenu: props.contextMenu, getSubRowDetails: props.getSubRowDetails, rowGroupRenderer: props.rowGroupRenderer, enableCellSelect: enableCellSelect, enableCellAutoFocus: enableCellAutoFocus, cellNavigationMode: cellNavigationMode, eventBus: eventBus, interactionMasksMetaData: interactionMasksMetaData, RowsContainer: props.RowsContainer, editorPortalTarget: editorPortalTarget, onCanvasKeydown: props.onGridKeyDown, onCanvasKeyup: props.onGridKeyUp, renderBatchSize: renderBatchSize, summaryRows: props.summaryRows }))))));
 }
 export default forwardRef(DataGrid);
 //# sourceMappingURL=DataGrid.js.map

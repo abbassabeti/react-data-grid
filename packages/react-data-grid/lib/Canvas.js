@@ -44,6 +44,18 @@ export default function Canvas(_a) {
             summaryRef.current.scrollLeft = scrollLeft;
         }
     }
+
+    function handleOuterScroll(scroll) {
+        var {scrollLeft,scrollTop} = scroll
+        setScrollLeft(scrollLeft);
+        onScroll({ scrollLeft: scrollLeft, scrollTop: scrollTop });
+        if (summaryRef.current) {
+            summaryRef.current.scrollLeft = scrollLeft;
+        }
+        if (canvas.current){
+            canvas.current.scrollLeft = scrollLeft
+        }
+    }
     function getClientHeight() {
         if (canvas.current)
             return canvas.current.clientHeight;

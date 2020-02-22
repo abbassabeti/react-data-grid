@@ -43,6 +43,12 @@ export default forwardRef(function Header(props, ref) {
     function onHeaderClick() {
         props.cellMetaData.onCellClick({ rowIdx: -1, idx: -1 });
     }
-    return (React.createElement("div", { ref: headerRef, className: "rdg-header", onClick: onHeaderClick }, getHeaderRows()));
+
+    function handleScroll(){
+        if (props.onScroll != undefined){
+            props.onScroll()
+        }
+    }
+    return (React.createElement("div", { ref: headerRef, className: "rdg-header", onClick: onHeaderClick, onScroll: handleScroll }, getHeaderRows()));
 });
 //# sourceMappingURL=Header.js.map

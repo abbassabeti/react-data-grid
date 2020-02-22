@@ -2,7 +2,7 @@ import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 
 import HeaderRow from './HeaderRow';
 import { getScrollbarSize, isPositionStickySupported } from './utils';
-import { CalculatedColumn, HeaderRowData, ColumnMetrics, CellMetaData, ScrollPosition } from './common/types';
+import { CalculatedColumn, HeaderRowData, ColumnMetrics, CellMetaData } from './common/types';
 import { DEFINE_SORT } from './common/enums';
 import { DataGridProps } from './DataGrid';
 
@@ -24,7 +24,6 @@ export interface HeaderProps<R, K extends keyof R> extends SharedDataGridProps<R
   columnMetrics: ColumnMetrics<R>;
   headerRows: [HeaderRowData<R>, HeaderRowData<R> | undefined];
   cellMetaData: CellMetaData<R>;
-  onScroll(position: ScrollPosition): void;
   onSort?(columnKey: keyof R, direction: DEFINE_SORT): void;
   onColumnResize(column: CalculatedColumn<R>, width: number): void;
 }
@@ -37,12 +36,6 @@ export default forwardRef(function Header<R, K extends keyof R>(props: HeaderPro
   const headerRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HeaderRow<R, K>>(null);
   const filterRowRef = useRef<HeaderRow<R, K>>(null);
-
-  function handleScroll(e: React.UIEvent<HTMLDivElement>) {
-    debugger
-    const { scrollLeft, scrollTop } = e.currentTarget;
-    props.onScroll({scrollLeft,scrollTop})
-  }
 
   useImperativeHandle(ref, () => ({
     setScrollLeft(scrollLeft: number): void {
@@ -114,7 +107,6 @@ export default forwardRef(function Header<R, K extends keyof R>(props: HeaderPro
       ref={headerRef}
       className="rdg-header"
       onClick={onHeaderClick}
-      onScroll={handleScroll}
     >
       {getHeaderRows()}
     </div>

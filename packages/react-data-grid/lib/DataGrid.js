@@ -86,16 +86,6 @@ function DataGrid(_a, ref) {
             props.onScroll(scrollPosition);
         }
     }
-    function handleHeaderScroll(scrollPosition) {
-        debugger
-        if (canvasRef.current != undefined && scrollLeft.current !== scrollPosition.scrollLeft) {
-            scrollLeft.current = scrollPosition.scrollLeft;
-            canvasRef.current.handleOuterScroll(scrollPosition);
-        }
-        if (props.onScroll) {
-            props.onScroll(scrollPosition);
-        }
-    }
 
     function handleDragEnter(overRowIdx) {
         eventBus.dispatch(EventTypes.DRAG_ENTER, overRowIdx);

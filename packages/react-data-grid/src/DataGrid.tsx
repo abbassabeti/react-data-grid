@@ -266,15 +266,6 @@ function DataGrid<R, K extends keyof R>({
     }
   }
 
-  function handleHeaderScroll(scrollPosition: ScrollPosition) {
-    if (scrollLeft.current !== scrollPosition.scrollLeft) {
-      scrollLeft.current = scrollPosition.scrollLeft;
-    }
-    if (props.onScroll) {
-      props.onScroll(scrollPosition);
-    }
-  }
-
   function handleDragEnter(overRowIdx: number) {
     eventBus.dispatch(EventTypes.DRAG_ENTER, overRowIdx);
   }
@@ -438,7 +429,6 @@ function DataGrid<R, K extends keyof R>({
             onColumnResize={handleColumnResize}
             headerRows={headerRows}
             sortColumn={props.sortColumn}
-            onScroll={handleHeaderScroll}
             sortDirection={props.sortDirection}
             draggableHeaderCell={props.draggableHeaderCell}
             onSort={props.onGridSort}

@@ -38,6 +38,12 @@ export default forwardRef(function Header<R, K extends keyof R>(props: HeaderPro
   const rowRef = useRef<HeaderRow<R, K>>(null);
   const filterRowRef = useRef<HeaderRow<R, K>>(null);
 
+  function handleScroll(e: React.UIEvent<HTMLDivElement>) {
+    debugger
+    const { scrollLeft, scrollTop } = e.currentTarget;
+    props.onScroll({scrollLeft,scrollTop})
+  }
+
   useImperativeHandle(ref, () => ({
     setScrollLeft(scrollLeft: number): void {
       headerRef.current!.scrollLeft = scrollLeft;
@@ -108,6 +114,7 @@ export default forwardRef(function Header<R, K extends keyof R>(props: HeaderPro
       ref={headerRef}
       className="rdg-header"
       onClick={onHeaderClick}
+      onScroll={handleScroll}
     >
       {getHeaderRows()}
     </div>

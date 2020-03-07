@@ -31,8 +31,8 @@ var Row = /** @class */ (function (_super) {
         for (var colIdx = 0; colIdx <= colOverscanEndIdx; colIdx++) {
             var column = columns[colIdx];
             var colIsFrozen = isFrozen(column);
-            if (colIdx < colOverscanStartIdx && !colIsFrozen)
-                continue;
+            //if (colIdx < colOverscanStartIdx && !colIsFrozen)
+                //continue;
             var key = column.key;
             cellElements.push(React.createElement(Renderer, { key: key, idx: colIdx, rowIdx: idx, column: column, lastFrozenColumnIndex: lastFrozenColumnIndex, cellMetaData: cellMetaData, rowData: row, expandableOptions: this.getExpandableOptions(key), scrollLeft: colIsFrozen && typeof scrollLeft === 'number' ? scrollLeft : undefined, isRowSelected: isRowSelected, onRowSelectionChange: onRowSelectionChange, isSummaryRow: isSummaryRow }));
         }

@@ -22,19 +22,19 @@ export function getHorizontalRangeToRender(_a) {
     var viewportRight = scrollLeft + viewportWidth;
     // get first and last non-frozen column indexes
     var lastColIdx = columns.length - 1;
-    var firstUnfrozenColumnIdx = Math.min(lastFrozenColumnIndex + 1, lastColIdx);
+    //var firstUnfrozenColumnIdx = Math.min(lastFrozenColumnIndex + 1, lastColIdx);
     // skip rendering non-frozen columns if the frozen columns cover the entire viewport
-    if (viewportLeft >= viewportRight) {
+    /*if (viewportLeft >= viewportRight) {
         return {
             colVisibleStartIdx: firstUnfrozenColumnIdx,
             colVisibleEndIdx: firstUnfrozenColumnIdx,
             colOverscanStartIdx: firstUnfrozenColumnIdx,
             colOverscanEndIdx: firstUnfrozenColumnIdx
         };
-    }
+    }*/
     // get the first visible non-frozen column index
-    var colVisibleStartIdx = firstUnfrozenColumnIdx;
-    while (colVisibleStartIdx < lastColIdx) {
+    var colVisibleStartIdx = 0//firstUnfrozenColumnIdx;
+    /*while (colVisibleStartIdx < lastColIdx) {
         var _b = columns[colVisibleStartIdx], left = _b.left, width = _b.width;
         // if the right side of the columnn is beyond the left side of the available viewport,
         // then it is the first column that's at least partially visible
@@ -42,10 +42,10 @@ export function getHorizontalRangeToRender(_a) {
             break;
         }
         colVisibleStartIdx++;
-    }
+    }*/
     // get the last visible non-frozen column index
-    var colVisibleEndIdx = colVisibleStartIdx;
-    while (colVisibleEndIdx < lastColIdx) {
+    var colVisibleEndIdx = lastColIdx;//colVisibleStartIdx;
+    /*while (colVisibleEndIdx < lastColIdx) {
         var _c = columns[colVisibleEndIdx], left = _c.left, width = _c.width;
         // if the right side of the column is beyond or equal to the right side of the available viewport,
         // then it the last column that's at least partially visible, as the previous column's right side is not beyond the viewport.
@@ -53,9 +53,9 @@ export function getHorizontalRangeToRender(_a) {
             break;
         }
         colVisibleEndIdx++;
-    }
-    var colOverscanStartIdx = Math.max(firstUnfrozenColumnIdx, colVisibleStartIdx - 1);
-    var colOverscanEndIdx = Math.min(lastColIdx, colVisibleEndIdx + 1);
+    }*/
+    var colOverscanStartIdx = 0;//Math.max(firstUnfrozenColumnIdx, colVisibleStartIdx - 1);
+    var colOverscanEndIdx = lastColIdx;//Math.min(lastColIdx, colVisibleEndIdx + 1);
     return { colVisibleStartIdx: colVisibleStartIdx, colVisibleEndIdx: colVisibleEndIdx, colOverscanStartIdx: colOverscanStartIdx, colOverscanEndIdx: colOverscanEndIdx };
 }
 //# sourceMappingURL=viewportUtils.js.map

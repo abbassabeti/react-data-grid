@@ -388,7 +388,7 @@ var InteractionMasks = /** @class */ (function (_super) {
             onHitBoundary: onHitTopBoundary
         };
         var ArrowRight = {
-            getNext: function (current) { return (__assign(__assign({}, current), { idx: current.idx + 1 })); },
+            getNext: function (current) { return (__assign(__assign({}, current), { idx: current.idx - 1 })); },
             isCellAtBoundary: isCellAtRightBoundary,
             onHitBoundary: function (next) {
                 onHitRightBoundary(next);
@@ -399,7 +399,7 @@ var InteractionMasks = /** @class */ (function (_super) {
             }
         };
         var ArrowLeft = {
-            getNext: function (current) { return (__assign(__assign({}, current), { idx: current.idx - 1 })); },
+            getNext: function (current) { return (__assign(__assign({}, current), { idx: current.idx + 1 })); },
             isCellAtBoundary: isCellAtLeftBoundary,
             onHitBoundary: function (next) {
                 onHitLeftBoundary(next);
